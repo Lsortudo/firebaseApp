@@ -17,9 +17,9 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        val button = view.findViewById<Button>(R.id.button)
+        val button = view.findViewById<Button>(R.id.btnSignUp)
         button.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_signInFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_signUpFragment)
         }
 
         return view
