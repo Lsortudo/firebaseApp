@@ -19,10 +19,10 @@ class SignUpFragment : Fragment() {
     // viewbinding soo i don't have to use FindViewById (DEP)
     lateinit var binding: FragmentSignUpBinding
 
-
+    // Firebase connection
     private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
-
+    private var contador = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,12 +31,6 @@ class SignUpFragment : Fragment() {
         // Inflate the layout for this fragment with ViewBinding
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
         return binding.root
-
-        // Call SignUp function
-        // Initialize Firebase Auth
-
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,7 +40,7 @@ class SignUpFragment : Fragment() {
             findNavController().navigate(R.id.signInFragment)
         }
 
-
+        // Get value from EditTexts
         binding.btnSignUp.setOnClickListener {
 
             val email = binding.etEmail.text.toString()
@@ -55,6 +49,8 @@ class SignUpFragment : Fragment() {
             val lastName = binding.etLastName.text.toString()
             val dateBirth = binding.etDateBirth.text.toString()
 
+
+            // Call SignUp function's'
             funSignUp(email, password)
             funAdditionalData(email, password, firstName, lastName, dateBirth)
         }
@@ -63,7 +59,6 @@ class SignUpFragment : Fragment() {
 
     private fun funAdditionalData(email: String, password: String, firstName: String, lastName: String, dateBirth: String) {
 
-
         val map = hashMapOf(
             "email" to email,
             "password" to password,
@@ -71,9 +66,10 @@ class SignUpFragment : Fragment() {
             "lastName" to lastName,
             "dateBirth" to dateBirth,
         )
-
-        db.collection("usuarios").document("usuario").set(map).addOnCompleteListener {
+        // Sending info to DB
+        db.collection("users").document("user${contador}").set(map).addOnCompleteListener {
             if(it.isSuccessful) {
+                contador++
                 Toast.makeText(
                     context,
                     "data sent to the database",
@@ -84,14 +80,6 @@ class SignUpFragment : Fragment() {
         }
 
 
-    }
-
-    private fun clearFields() {
-        binding.etEmail.setText("")
-        binding.etPassword.setText("")
-        binding.etFirstName.setText("")
-        binding.etLastName.setText("")
-        binding.etDateBirth.setText("")
     }
 
     private fun funSignUp(email: String, password: String) {
@@ -111,6 +99,14 @@ class SignUpFragment : Fragment() {
                 Toast.makeText(context, "error occurred ${it.localizedMessage}", Toast.LENGTH_LONG)
                     .show()
             }
+    }
+
+    private fun clearFields() {
+        binding.etEmail.setText("")
+        binding.etPassword.setText("")
+        binding.etFirstName.setText("")
+        binding.etLastName.setText("")
+        binding.etDateBirth.setText("")
     }
 
 

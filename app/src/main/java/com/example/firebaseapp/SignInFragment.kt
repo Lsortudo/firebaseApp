@@ -12,7 +12,10 @@ import com.example.firebaseapp.databinding.FragmentSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class SignInFragment : Fragment() {
+
     lateinit var binding: FragmentSignInBinding
+
+    // Firebase connection
     private val auth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
@@ -23,9 +26,6 @@ class SignInFragment : Fragment() {
         //val view = inflater.inflate(R.layout.fragment_sign_in, container, false)
         binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
-
-
-
 
         /*val button = view.findViewById<Button>(R.id.button)
         button.setOnClickListener {
