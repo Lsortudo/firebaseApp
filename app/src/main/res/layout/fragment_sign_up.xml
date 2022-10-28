@@ -246,7 +246,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/tvAlreadyAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Already have an account? Log in"

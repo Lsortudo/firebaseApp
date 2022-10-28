@@ -12,42 +12,95 @@ import androidx.navigation.fragment.findNavController
 import com.example.firebaseapp.databinding.FragmentSignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class SignUpFragment : Fragment() {
+    // viewbinding soo i don't have to use FindViewById (DEP)
     lateinit var binding: FragmentSignUpBinding
-    //private lateinit var auth: FirebaseAuth
+
+
     private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment with binding
+        // Inflate the layout for this fragment with ViewBinding
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
         return binding.root
 
         // Call SignUp function
         // Initialize Firebase Auth
+
+
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.tvAlreadyAccount.setOnClickListener {
+            findNavController().navigate(R.id.signInFragment)
+        }
+
+
         binding.btnSignUp.setOnClickListener {
-            funSignUp()
+
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            val firstName = binding.etFirstName.text.toString()
+            val lastName = binding.etLastName.text.toString()
+            val dateBirth = binding.etDateBirth.text.toString()
+
+            funSignUp(email, password)
+            funAdditionalData(email, password, firstName, lastName, dateBirth)
+        }
+
+    }
+
+    private fun funAdditionalData(email: String, password: String, firstName: String, lastName: String, dateBirth: String) {
+
+
+        val map = hashMapOf(
+            "email" to email,
+            "password" to password,
+            "firstName" to firstName,
+            "lastName" to lastName,
+            "dateBirth" to dateBirth,
+        )
+
+        db.collection("usuarios").document("usuario").set(map).addOnCompleteListener {
+            if(it.isSuccessful) {
+                Toast.makeText(
+                    context,
+                    "data sent to the database",
+                    Toast.LENGTH_LONG
+                ).show()
+                //clearFields()
+            }
         }
 
 
     }
 
-    private fun funSignUp() {
-        val email = binding.etEmail
-        val password = binding.etPassword
+    private fun clearFields() {
+        binding.etEmail.setText("")
+        binding.etPassword.setText("")
+        binding.etFirstName.setText("")
+        binding.etLastName.setText("")
+        binding.etDateBirth.setText("")
+    }
 
-        val userEmail = email.text.toString()
-        val userPassword = password.text.toString()
+    private fun funSignUp(email: String, password: String) {
 
-        auth.createUserWithEmailAndPassword(userEmail, userPassword)
+        auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 // Sign in success, update UI with the signed-in user's information
-            findNavController().navigate(R.id.homeFragment)
+            findNavController().navigate(R.id.signInFragment)
             } else {
                 // If sign in fails, display a message to the user.
                 Toast.makeText(context, "Authentication failed.",

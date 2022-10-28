@@ -24,9 +24,8 @@ class SignInFragment : Fragment() {
         binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
 
-        binding.btnSignIn.setOnClickListener {
-            funSignIn()
-        }
+
+
 
         /*val button = view.findViewById<Button>(R.id.button)
         button.setOnClickListener {
@@ -34,6 +33,20 @@ class SignInFragment : Fragment() {
         }*/
         //return view
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+
+        binding.btnSignIn.setOnClickListener {
+            funSignIn()
+        }
+
+        binding.tvDontHaveAccount.setOnClickListener {
+            findNavController().navigate(R.id.signUpFragment)
+        }
     }
 
     private fun funSignIn() {
