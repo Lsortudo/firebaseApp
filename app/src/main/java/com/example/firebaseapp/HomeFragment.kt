@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.firebaseapp.databinding.FragmentHomeBinding
 import com.google.firebase.auth.ktx.auth
@@ -53,6 +54,24 @@ class HomeFragment : Fragment() {
                     binding.tvNameAPI.text = completeName
                 }
             }
+
+        binding.ivProfilePicture.setOnClickListener {
+            val tvSaldoValor =  binding.tvSaldoValor.text.toString()
+            val doubleSaldoValor = tvSaldoValor.toDouble()
+            val actualBalance = doubleSaldoValor + 100.43
+            val returnString = String.format("%.2f", actualBalance)
+            Toast.makeText(context, "Adicionado +100 e o saldo atual é: ${actualBalance}", Toast.LENGTH_SHORT).show()
+            binding.tvSaldoValor.text = returnString.toString()
+
+
+            /*val stringSaldoValor = tvSaldoValor.toString()
+            Toast.makeText(context, "${stringSaldoValor}", Toast.LENGTH_LONG).show()
+            val intSaldoValor = Integer.valueOf(stringSaldoValor)
+            val saldoAtual = intSaldoValor * 2
+            val returnString = saldoAtual.toString()
+            binding.tvSaldoValor.text = returnString*/
+
+        }
 
 
     }

@@ -47,7 +47,7 @@ class SignUpFragment : Fragment() {
             val firstName = binding.etFirstName.text.toString()
             val lastName = binding.etLastName.text.toString()
             val dateBirth = binding.etDateBirth.text.toString()
-            val dinheiroInicial = "100,00"
+            val dinheiroInicial = "100.00"
             var saldo = dinheiroInicial.toString()
 
             // Call SignUp function's'
