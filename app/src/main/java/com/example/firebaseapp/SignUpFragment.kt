@@ -22,7 +22,6 @@ class SignUpFragment : Fragment() {
     // Firebase connection
     private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
-    private var contador = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,16 +47,17 @@ class SignUpFragment : Fragment() {
             val firstName = binding.etFirstName.text.toString()
             val lastName = binding.etLastName.text.toString()
             val dateBirth = binding.etDateBirth.text.toString()
-
+            val dinheiroInicial = "100,00"
+            var saldo = dinheiroInicial.toString()
 
             // Call SignUp function's'
             funSignUp(email, password)
-            funAdditionalData(email, password, firstName, lastName, dateBirth)
+            funAdditionalData(email, password, firstName, lastName, dateBirth, saldo)
         }
 
     }
 
-    private fun funAdditionalData(email: String, password: String, firstName: String, lastName: String, dateBirth: String) {
+    private fun funAdditionalData(email: String, password: String, firstName: String, lastName: String, dateBirth: String, saldo: String) {
 
         val map = hashMapOf(
             "email" to email,
@@ -65,11 +65,11 @@ class SignUpFragment : Fragment() {
             "firstName" to firstName,
             "lastName" to lastName,
             "dateBirth" to dateBirth,
+            "saldo" to saldo,
         )
         // Sending info to DB
-        db.collection("users").document("user${contador}").set(map).addOnCompleteListener {
+        db.collection("users").document("user ${email}").set(map).addOnCompleteListener {
             if(it.isSuccessful) {
-                contador++
                 Toast.makeText(
                     context,
                     "data sent to the database",
