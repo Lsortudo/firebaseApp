@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.firebaseapp.databinding.FragmentHomeBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
@@ -18,6 +19,7 @@ class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
     private val db = FirebaseFirestore.getInstance()
+    val user = Firebase.auth.currentUser
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +36,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val user = Firebase.auth.currentUser
+        //val user = Firebase.auth.currentUser
         /*user?.let {
             val email = user.email
         }*/
@@ -43,6 +45,7 @@ class HomeFragment : Fragment() {
         db.collection("users").document("user ${user?.email}").get()
             .addOnCompleteListener{
                 if (it.isSuccessful) {
+                    Toast.makeText(context, "UID ${Firebase.auth.currentUser!!.uid}", Toast.LENGTH_SHORT).show()
                     val saldo = it.result.get("saldo").toString()
                     val firstName = it.result.get("firstName").toString().replaceFirstChar { if (it.isLowerCase()) it.titlecase(
                         Locale.getDefault()) else it.toString() }
@@ -63,6 +66,7 @@ class HomeFragment : Fragment() {
             Toast.makeText(context, "Adicionado +100 e o saldo atual é: ${actualBalance}", Toast.LENGTH_SHORT).show()
             binding.tvSaldoValor.text = returnString.toString()
 
+            returnBalanceToFirebase(returnString)
 
             /*val stringSaldoValor = tvSaldoValor.toString()
             Toast.makeText(context, "${stringSaldoValor}", Toast.LENGTH_LONG).show()
@@ -73,6 +77,23 @@ class HomeFragment : Fragment() {
 
         }
 
+
+    }
+
+    private fun returnBalanceToFirebase(returnString: String) {
+        val map = hashMapOf(
+            "saldo" to returnString,
+        )
+        db.collection("users").document("user ${user?.email}").set(map, SetOptions.merge()).addOnCompleteListener{
+            if(it.isSuccessful) {
+                Toast.makeText(
+                    context,
+                    "Balance sent to the database",
+                    Toast.LENGTH_LONG
+                ).show()
+                //clearFields()
+            }
+        }
 
     }
 }

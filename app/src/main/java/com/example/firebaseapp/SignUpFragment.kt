@@ -68,7 +68,7 @@ class SignUpFragment : Fragment() {
             "saldo" to saldo,
         )
         // Sending info to DB
-        db.collection("users").document("user ${email}").set(map).addOnCompleteListener {
+        db.collection("users").document("user ${email}").set(map).addOnCompleteListener{
             if(it.isSuccessful) {
                 Toast.makeText(
                     context,
