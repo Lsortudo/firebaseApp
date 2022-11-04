@@ -53,18 +53,18 @@ class HomeFragment : Fragment() {
                         Locale.getDefault()) else it.toString() }
                     val completeName = "${firstName} ${lastName}"
 
-                    binding.tvSaldoValor.text = saldo
+                    binding.tvAccountBalance.text = saldo
                     binding.tvNameAPI.text = completeName
                 }
             }
 
         binding.ivProfilePicture.setOnClickListener {
-            val tvSaldoValor =  binding.tvSaldoValor.text.toString()
+            val tvSaldoValor =  binding.tvAccountBalance.text.toString()
             val doubleSaldoValor = tvSaldoValor.toDouble()
             val actualBalance = doubleSaldoValor + 100.43
             val returnString = String.format("%.2f", actualBalance)
             Toast.makeText(context, "Adicionado +100 e o saldo atual é: ${actualBalance}", Toast.LENGTH_SHORT).show()
-            binding.tvSaldoValor.text = returnString.toString()
+            binding.tvAccountBalance.text = returnString.toString()
 
             returnBalanceToFirebase(returnString)
 

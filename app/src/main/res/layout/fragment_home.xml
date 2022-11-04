@@ -7,8 +7,6 @@
     android:background="@drawable/menu_background"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -34,6 +32,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/tvWelcome"
                     android:layout_width="wrap_content"
@@ -43,7 +42,8 @@
                     android:textSize="18sp"
                     android:textStyle="bold|italic"
                     app:layout_constraintBottom_toTopOf="@id/tvNameAPI"
-                    app:layout_constraintLeft_toLeftOf="@id/tvNameAPI"/>
+                    app:layout_constraintLeft_toLeftOf="@id/tvNameAPI" />
+
                 <TextView
                     android:id="@+id/tvNameAPI"
                     android:layout_width="wrap_content"
@@ -57,34 +57,65 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/ivProfilePicture" />
 
-                <TextView
-                    android:id="@+id/tvSaldo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="R$"
-                    android:textColor="#ffffff"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="@id/tvNameAPI"
-                    app:layout_constraintTop_toBottomOf="@id/tvNameAPI" />
-                <TextView
-                    android:id="@+id/tvSaldoValor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="#ffffff"
-                    android:layout_marginLeft="32dp"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="@id/tvSaldo"
-                    app:layout_constraintTop_toBottomOf="@id/tvNameAPI" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@drawable/bottom_background"
                 android:layout_height="match_parent"
+                android:background="@drawable/bottom_background"
                 android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <TextView
+                        android:id="@+id/tvAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="32dp"
+                        android:text="Conta"
+                        android:textColor="#000000"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tvAccountBalanceSignal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:text="R$"
+                        android:textColor="#000000"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvAccount" />
+
+                    <TextView
+                        android:id="@+id/tvAccountBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="@id/tvAccountBalanceSignal"
+                        app:layout_constraintTop_toBottomOf="@id/tvAccount" />
+
+                    <TextView
+                        android:id="@+id/tvIconArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="32dp"
+                        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -182,11 +213,11 @@
                     android:id="@+id/tvNeedSomething"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
                     android:text="Do u need something?"
                     android:textColor="#000000"
-                    android:textStyle="bold"
                     android:textSize="16sp"
-                    android:layout_marginStart="32dp"/>
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -453,7 +484,7 @@
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <ImageView
-                                    android:id="@+id/ivMenuIcon6"
+                                    android:id="@+id/ivIconPix"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_6"
@@ -469,7 +500,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:text="Tip"
+                                android:text="PIX"
                                 android:textAlignment="center"
                                 android:textColor="#2e3d6d"
                                 android:textStyle="bold" />
