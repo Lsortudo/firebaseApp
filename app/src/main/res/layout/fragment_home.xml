@@ -67,24 +67,24 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="32dp">
 
                     <TextView
                         android:id="@+id/tvAccount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="32dp"
                         android:text="Conta"
                         android:textColor="#000000"
                         android:textSize="22sp"
                         android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/tvAccountBalanceSignal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
                         android:text="R$"
                         android:textColor="#000000"
@@ -110,10 +110,43 @@
                         android:id="@+id/tvIconArrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="32dp"
                         android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutTransfers"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="64dp"
+                        android:background="@drawable/search_edit_background"
+                        android:padding="16dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvAccountBalance">
+
+                        <TextView
+                            android:id="@+id/tvIconCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_baseline_credit_card_24"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tvMyCards"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Transfers"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:textColor="#000000"
+                            android:layout_marginStart="12dp"
+                            app:layout_constraintStart_toEndOf="@+id/tvIconCard"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

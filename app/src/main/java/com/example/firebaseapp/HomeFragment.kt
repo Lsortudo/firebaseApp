@@ -76,6 +76,9 @@ class HomeFragment : Fragment() {
             binding.tvSaldoValor.text = returnString*/
 
         }
+        binding.layoutTransfers.setOnClickListener{
+            findNavController().navigate(R.id.pixFragment)
+        }
 
 
     }

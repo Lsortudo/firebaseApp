@@ -1,17 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PixFragment"
-    android:background="@drawable/menu_background">
+    android:background="#ededf7"
+    tools:context=".PixFragment">
 
-    <ScrollView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="24dp">
+
+        <TextView
+            android:id="@+id/tvIconClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_close_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTransferTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="How much would u like to transfer?"
+            android:textColor="#000000"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvIconClose" />
+
+        <TextView
+            android:id="@+id/tvBalanceAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Balance available in ur account "
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTransferTitle" />
+
+        <TextView
+            android:id="@+id/tvBalanceAvailableSignal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R$ "
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/tvBalanceAvailable"
+            app:layout_constraintTop_toTopOf="@id/tvBalanceAvailable" />
+
+        <TextView
+            android:id="@+id/tvBalanceAvailableBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5454.30"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/tvBalanceAvailableSignal"
+            app:layout_constraintTop_toTopOf="@id/tvBalanceAvailable" />
+
+        <EditText
+            android:id="@+id/etBalanceValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:hint="R$ 0.00"
+            android:textColorHint="#000000"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tvBalanceAvailable" />
 
 
-    </ScrollView>
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:backgroundTint="@null"
+            android:background="@drawable/square_button"
+            android:drawableLeft="@drawable/ic_baseline_arrow_forward_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
