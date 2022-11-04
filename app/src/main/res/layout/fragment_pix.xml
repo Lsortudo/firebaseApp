@@ -58,7 +58,7 @@
             android:id="@+id/tvBalanceAvailableBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5454.30"
+            android:text=""
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -73,11 +73,24 @@
             android:hint="R$ 0.00"
             android:textColorHint="#000000"
             android:textSize="32sp"
+            android:inputType="numberDecimal"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tvBalanceAvailable" />
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="email@email.com"
+            android:textColorHint="#000000"
+            android:textSize="32sp"
+            android:inputType="textEmailAddress"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/etBalanceValue" />
 
 
         <Button
+            android:id="@+id/btnArrowRight"
             android:layout_width="64dp"
             android:layout_height="64dp"
             app:backgroundTint="@null"
