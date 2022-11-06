@@ -51,6 +51,27 @@ class PixFragment : Fragment() {
         binding.tvIconClose.setOnClickListener {
             findNavController().navigate(R.id.homeFragment)
         }
+
+        /*binding.btnGenerator.setOnClickListener {
+            val receiverEmail = binding.etEmail.text.toString()
+            db.collection("users").document("user ${receiverEmail}").get()
+                .addOnCompleteListener {
+                    if(it.isSuccessful) {
+                        val receiverBalance = it.result.get("saldo").toString()
+                        Toast.makeText(
+                            context,
+                            "a ${receiverEmail}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        //aux = receiverBalance
+                        binding.tvReceiverBalanceAvailableBalance.text = receiverBalance
+                        // preciso mandar pra la transferMoney(receiverBalance)
+                        // tirar caso comente la transferMoney(receiverBalance)
+                    }
+                }
+        }*/
+
+
         binding.btnArrowRight.setOnClickListener {
         //Numero pra pegar / atualizar tvBalanceAvailableBalance
             val userBalance = binding.tvBalanceAvailableBalance.text.toString()
@@ -63,10 +84,29 @@ class PixFragment : Fragment() {
 
             val returnString = String.format("%.2f", userNowBalance)
             returnBalanceToFirebase(returnString)
+            //transferMoney()
+
+            val receiverEmail = binding.etEmail.text.toString()
+            db.collection("users").document("user ${receiverEmail}").get()
+                .addOnCompleteListener {
+                    if(it.isSuccessful) {
+                        val receiverBalance = it.result.get("saldo").toString()
+                        Toast.makeText(
+                            context,
+                            "a ${receiverEmail}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        //aux = receiverBalance
+                        binding.tvReceiverBalanceAvailableBalance.text = receiverBalance
+                        // preciso mandar pra la transferMoney(receiverBalance)
+                        // tirar caso comente la transferMoney(receiverBalance)
+                    }
+                }
+
             transferMoney()
 
             binding.tvBalanceAvailableBalance.setText("${userNowBalance}")
-            Toast.makeText(context, "${returnString},${doubleTransferValue} , ${userNowBalance}", Toast.LENGTH_SHORT).show()
+            //valores Toast.makeText(context, "${returnString},${doubleTransferValue} , ${userNowBalance}", Toast.LENGTH_SHORT).show()
 
 
 
@@ -78,12 +118,9 @@ class PixFragment : Fragment() {
     }
 
     private fun transferMoney() {
-        val userBalance = binding.tvBalanceAvailableBalance.text.toString()
-        val doubleMoney = userBalance.toDouble()
-
         val userTransferValue = binding.etBalanceValue.text.toString()
         val doubleTransferValue = userTransferValue.toDouble()
-
+        val receiverEmail = binding.etEmail.text.toString()
 
 
 
@@ -91,32 +128,44 @@ class PixFragment : Fragment() {
         //var receiverMoneyMoney = receiverBalanceMoneyUpdate
 
         //val receiverEmail = binding.etEmail.text.toString()
-        var aux = ""
-        val receiverEmail = binding.etEmail.text.toString()
+        //var aux = ""
+        /*AQUI val receiverEmail = binding.etEmail.text.toString()
         db.collection("users").document("user ${receiverEmail}").get()
             .addOnCompleteListener {
                 if(it.isSuccessful) {
                     val receiverBalance = it.result.get("saldo").toString()
-                    aux = receiverBalance
+                    //aux = receiverBalance
+                    binding.tvReceiverBalanceAvailableBalance.text = receiverBalance
                     // preciso mandar pra la transferMoney(receiverBalance)
                     // tirar caso comente la transferMoney(receiverBalance)
                 }
-            }
-        val receiverMoneyMoney = aux.toDouble()
+            }AQUI */
+        //val receiverMoneyMoney = aux.toDouble()
 
         // tirar comentario da funcao tiro o coentario desse getReceiverActualBalance()
         //Codigo acima pra tentar pegar a funcao embaixo
 
         // tava ativado     getReceiverActualBalance(DoubleTransferValue)
         // ? val receiverMoney = receiverBalance.toDouble()
+        if(binding.tvReceiverBalanceAvailableBalance.text.toString()!="")
+        {
+
+
         val DoubleTransferValue = doubleTransferValue
+        val pegarValor = binding.tvReceiverBalanceAvailableBalance.text.toString()
+        val receiverMoneyMoney = pegarValor.toDouble()
         val receivernowBalance = receiverMoneyMoney + DoubleTransferValue
 
         val returnStringReceiver = String.format("%.2f", receivernowBalance)
 
+        /*Toast.makeText(
+            context,
+            "email ${receiverEmail} valor string ${receivernowBalance}",
+            Toast.LENGTH_LONG
+        ).show()*/
 
 
-        val map = hashMapOf(
+               val map = hashMapOf(
             "saldo" to returnStringReceiver
         )
 
@@ -129,6 +178,7 @@ class PixFragment : Fragment() {
                 ).show()
                 //clearFields()
             }
+        }
         }
 
     }

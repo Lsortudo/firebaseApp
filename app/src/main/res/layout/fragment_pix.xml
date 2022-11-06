@@ -65,6 +65,18 @@
             app:layout_constraintLeft_toRightOf="@id/tvBalanceAvailableSignal"
             app:layout_constraintTop_toTopOf="@id/tvBalanceAvailable" />
 
+        <TextView
+            android:id="@+id/tvReceiverBalanceAvailableBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/tvBalanceAvailableBalance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBalanceAvailableBalance" />
+
         <EditText
             android:id="@+id/etBalanceValue"
             android:layout_width="match_parent"
@@ -98,6 +110,21 @@
             android:drawableLeft="@drawable/ic_baseline_arrow_forward_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
+        <Button
+            android:id="@+id/btnGenerator"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@null"
+            android:background="@drawable/button_background"
+            android:layout_margin="12dp"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            style="@android:style/Widget.Button"
+            android:textStyle="bold"
+            android:text="Gerar token" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

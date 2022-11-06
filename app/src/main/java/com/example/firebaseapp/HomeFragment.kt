@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
         db.collection("users").document("user ${user?.email}").get()
             .addOnCompleteListener{
                 if (it.isSuccessful) {
-                    Toast.makeText(context, "UID ${Firebase.auth.currentUser!!.uid}", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "UID ${Firebase.auth.currentUser!!.uid}", Toast.LENGTH_SHORT).show()
                     val saldo = it.result.get("saldo").toString()
                     val firstName = it.result.get("firstName").toString().replaceFirstChar { if (it.isLowerCase()) it.titlecase(
                         Locale.getDefault()) else it.toString() }
