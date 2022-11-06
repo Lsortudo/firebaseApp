@@ -76,13 +76,13 @@ class PixFragment : Fragment() {
         }
     }
 
-    private fun transferMoney(doubleTransferValue: Double) {
+    private fun transferMoney(doubleTransferValue: Double, arg String) {
         val receiverEmail = binding.etEmail.text.toString()
         //getReceiverActualBalance(receiverEmail)
         //Codigo acima pra tentar pegar a funcao embaixo
 
-        getReceiverActualBalance()
-        val receiverMoney = receiverBalance.toDouble()
+        getReceiverActualBalance(DoubleTransferValue)
+        // ? val receiverMoney = receiverBalance.toDouble()
         val DoubleTransferValue = doubleTransferValue
         val receivernowBalance = receiverMoney + DoubleTransferValue
 
@@ -104,17 +104,15 @@ class PixFragment : Fragment() {
         }
 
     }
-    private fun getBalance() {
-        // get receiver from getReceiverActualBalance
-
-    }
     //receiverEmail: String
-    private fun getReceiverActualBalance() {
+    private fun getReceiverActualBalance(DoubleTransferValue: Double) {
+        val mandar = DoubleTransferValue
         val receiverEmail = binding.etEmail.text.toString()
         db.collection("users").document("user ${receiverEmail}").get()
             .addOnCompleteListener {
                 if(it.isSuccessful) {
                     val receiverBalance = it.result.get("saldo").toString()
+                    transferMoney(mandar, receiverBalance)
                 }
             }
 
