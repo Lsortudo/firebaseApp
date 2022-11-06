@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ededf7"
+    android:fitsSystemWindows="true"
     tools:context=".PixFragment">
 
 
@@ -64,6 +65,26 @@
             android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@id/tvBalanceAvailableSignal"
             app:layout_constraintTop_toTopOf="@id/tvBalanceAvailable" />
+        <TextView
+            android:id="@+id/tvBalanceAvailableHisAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Balance available in his account "
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBalanceAvailable" />
+
+        <TextView
+            android:id="@+id/tvBalanceAvailableSignal2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R$ "
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/tvBalanceAvailableHisAccount"
+            app:layout_constraintTop_toTopOf="@id/tvBalanceAvailableHisAccount" />
 
         <TextView
             android:id="@+id/tvReceiverBalanceAvailableBalance"
@@ -73,9 +94,8 @@
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@id/tvBalanceAvailableBalance"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvBalanceAvailableBalance" />
+            app:layout_constraintLeft_toRightOf="@id/tvBalanceAvailableSignal2"
+            app:layout_constraintTop_toTopOf="@id/tvBalanceAvailableHisAccount" />
 
         <EditText
             android:id="@+id/etBalanceValue"

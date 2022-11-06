@@ -23,6 +23,8 @@ class PixFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
     }
 
     override fun onCreateView(
@@ -74,7 +76,8 @@ class PixFragment : Fragment() {
 
         binding.btnArrowRight.setOnClickListener {
         //Numero pra pegar / atualizar tvBalanceAvailableBalance
-            val userBalance = binding.tvBalanceAvailableBalance.text.toString()
+            // abaixo recoloquei para a função funUserTransfer
+            /*val userBalance = binding.tvBalanceAvailableBalance.text.toString()
             val doubleMoney = userBalance.toDouble()
 
             val userTransferValue = binding.etBalanceValue.text.toString()
@@ -84,6 +87,7 @@ class PixFragment : Fragment() {
 
             val returnString = String.format("%.2f", userNowBalance)
             returnBalanceToFirebase(returnString)
+            binding.tvBalanceAvailableBalance.setText("${userNowBalance}")*/
             //transferMoney()
 
             val receiverEmail = binding.etEmail.text.toString()
@@ -91,21 +95,15 @@ class PixFragment : Fragment() {
                 .addOnCompleteListener {
                     if(it.isSuccessful) {
                         val receiverBalance = it.result.get("saldo").toString()
-                        Toast.makeText(
-                            context,
-                            "a ${receiverEmail}",
-                            Toast.LENGTH_SHORT
-                        ).show()
                         //aux = receiverBalance
                         binding.tvReceiverBalanceAvailableBalance.text = receiverBalance
                         // preciso mandar pra la transferMoney(receiverBalance)
                         // tirar caso comente la transferMoney(receiverBalance)
                     }
                 }
-
             transferMoney()
 
-            binding.tvBalanceAvailableBalance.setText("${userNowBalance}")
+
             //valores Toast.makeText(context, "${returnString},${doubleTransferValue} , ${userNowBalance}", Toast.LENGTH_SHORT).show()
 
 
@@ -149,6 +147,7 @@ class PixFragment : Fragment() {
         // ? val receiverMoney = receiverBalance.toDouble()
         if(binding.tvReceiverBalanceAvailableBalance.text.toString()!="")
         {
+            funUserTransfer()
 
 
         val DoubleTransferValue = doubleTransferValue
@@ -179,7 +178,27 @@ class PixFragment : Fragment() {
                 //clearFields()
             }
         }
+            Toast.makeText(
+                context,
+                "Receiver balance updated",
+                Toast.LENGTH_LONG
+            ).show()
         }
+
+    }
+
+    private fun funUserTransfer() {
+        val userBalance = binding.tvBalanceAvailableBalance.text.toString()
+        val doubleMoney = userBalance.toDouble()
+
+        val userTransferValue = binding.etBalanceValue.text.toString()
+        val doubleTransferValue = userTransferValue.toDouble()
+
+        val userNowBalance = doubleMoney - doubleTransferValue
+
+        val returnString = String.format("%.2f", userNowBalance)
+        returnBalanceToFirebase(returnString)
+        binding.tvBalanceAvailableBalance.setText("${userNowBalance}")
 
     }
     //receiverEmail: String
@@ -207,7 +226,7 @@ class PixFragment : Fragment() {
                 Toast.makeText(
                     context,
                     "User balance updated",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 //clearFields()
             }
