@@ -62,29 +62,41 @@ class PixFragment : Fragment() {
 
             val returnString = String.format("%.2f", userNowBalance)
             returnBalanceToFirebase(returnString)
-            transferMoney(doubleTransferValue)
+            //transferMoney(doubleTransferValue)
 
-
-            Toast.makeText(context, "Adicionado +100 e o saldo atual é: ${userNowBalance}", Toast.LENGTH_SHORT).show()
+            binding.tvBalanceAvailableBalance.setText("${userNowBalance}")
+            Toast.makeText(context, "${returnString},${doubleTransferValue} , ${userNowBalance}", Toast.LENGTH_SHORT).show()
 
 
 
 
 
             //user?.email?.let { it1 -> firebaseGetBalance(it1) }
-            findNavController().navigate(R.id.homeFragment)
+            //tirar isso   findNavController().navigate(R.id.homeFragment)
         }
     }
 
-    private fun transferMoney(doubleTransferValue: Double, arg String) {
+    private fun transferMoney(receiverBalanceMoneyUpdate: String) {
+        val userBalance = binding.tvBalanceAvailableBalance.text.toString()
+        val doubleMoney = userBalance.toDouble()
+
+        val userTransferValue = binding.etBalanceValue.text.toString()
+        val doubleTransferValue = userTransferValue.toDouble()
+
+        val userNowBalance = doubleMoney - doubleTransferValue
+
+        val returnString = String.format("%.2f", userNowBalance)
+
+
+        val receiverMoneyMoney = receiverBalanceMoneyUpdate
         val receiverEmail = binding.etEmail.text.toString()
-        //getReceiverActualBalance(receiverEmail)
+        getReceiverActualBalance()
         //Codigo acima pra tentar pegar a funcao embaixo
 
-        getReceiverActualBalance(DoubleTransferValue)
+        // tava ativado     getReceiverActualBalance(DoubleTransferValue)
         // ? val receiverMoney = receiverBalance.toDouble()
         val DoubleTransferValue = doubleTransferValue
-        val receivernowBalance = receiverMoney + DoubleTransferValue
+        val receivernowBalance = receiverMoneyMoney + DoubleTransferValue
 
         val returnStringReceiver = String.format("%.2f", receivernowBalance)
 
@@ -105,14 +117,14 @@ class PixFragment : Fragment() {
 
     }
     //receiverEmail: String
-    private fun getReceiverActualBalance(DoubleTransferValue: Double) {
-        val mandar = DoubleTransferValue
+    private fun getReceiverActualBalance() {
         val receiverEmail = binding.etEmail.text.toString()
         db.collection("users").document("user ${receiverEmail}").get()
             .addOnCompleteListener {
                 if(it.isSuccessful) {
                     val receiverBalance = it.result.get("saldo").toString()
-                    transferMoney(mandar, receiverBalance)
+                    // preciso mandar pra la transferMoney(receiverBalance)
+                    transferMoney(receiverBalance)
                 }
             }
 
@@ -120,10 +132,11 @@ class PixFragment : Fragment() {
     }
 
     private fun returnBalanceToFirebase(returnString: String) {
+        var teste1 = returnString
         val map = hashMapOf(
-            "saldo" to returnString,
+            "saldo" to teste1,
         )
-        db.collection("users").document("user ${binding.etEmail.text}").set(map, SetOptions.merge()).addOnCompleteListener{
+        db.collection("users").document("user ${user?.email}").set(map, SetOptions.merge()).addOnCompleteListener{
             if(it.isSuccessful) {
                 Toast.makeText(
                     context,
