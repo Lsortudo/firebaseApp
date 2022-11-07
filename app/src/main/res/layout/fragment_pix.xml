@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ededf7"
+    android:fillViewport="true"
     android:fitsSystemWindows="true"
     tools:context=".PixFragment">
 
@@ -65,6 +66,7 @@
             android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@id/tvBalanceAvailableSignal"
             app:layout_constraintTop_toTopOf="@id/tvBalanceAvailable" />
+
         <TextView
             android:id="@+id/tvBalanceAvailableHisAccount"
             android:layout_width="wrap_content"
@@ -103,20 +105,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:hint="R$ 0.00"
+            android:inputType="numberDecimal"
             android:textColorHint="#000000"
             android:textSize="32sp"
-            android:inputType="numberDecimal"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/tvBalanceAvailable" />
+
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="email@email.com"
+            android:inputType="textEmailAddress"
             android:textColorHint="#000000"
             android:textSize="32sp"
-            android:inputType="textEmailAddress"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/etBalanceValue" />
 
@@ -125,28 +128,17 @@
             android:id="@+id/btnArrowRight"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            app:backgroundTint="@null"
             android:background="@drawable/square_button"
             android:drawableLeft="@drawable/ic_baseline_arrow_forward_24"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:layout_gravity="center"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
-        <Button
-            android:id="@+id/btnGenerator"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            app:backgroundTint="@null"
-            android:background="@drawable/button_background"
-            android:layout_margin="12dp"
-            android:layout_gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            style="@android:style/Widget.Button"
-            android:textStyle="bold"
-            android:text="Gerar token" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

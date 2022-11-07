@@ -46,6 +46,8 @@ class SignInFragment : Fragment() {
 
         binding.tvDontHaveAccount.setOnClickListener {
             findNavController().navigate(R.id.signUpFragment)
+            //activity?.finish()
+
         }
     }
 
