@@ -22,17 +22,17 @@ A project where i could use Google Firebase to do a basic simulation of a bank, 
 # APP Screenshot/Videos
 
 
-<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Login%20screen.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Login%20screen.png" width="368" height="756" />
-<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/SignUp%20screen.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/SignUp%20screen.png" width="368" height="756" /> <br>
+<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Login%20screen.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Login%20screen.png" width="360" height="740" />
+<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/SignUp%20screen.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/SignUp%20screen.png" width="360" height="740" /> <br>
 
-<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen.png" width="368" height="756" />
-<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix.png" width="368" height="756" /> <br>
+<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen.png" width="360" height="740" />
+<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix.png" width="360" height="740" /> <br>
 
-<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen%20footer.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen%20footer.png" width="368" height="756" />
-<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix%20softkeyboard.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix%20softkeyboard.png" width="368" height="756" /> <br>
+<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen%20footer.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen%20footer.png" width="360" height="740" />
+<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix%20softkeyboard.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix%20softkeyboard.png" width="360" height="740" /> <br>
 
-<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen%20Add%20Money.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen%20Add%20Money.png" width="368" height="756" />
-<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix%20filled.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix%20filled.png" width="368" height="756" /> <br>
+<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen%20Add%20Money.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Home%20screen%20Add%20Money.png" width="360" height="740" />
+<img src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix%20filled.png" data-canonical-src="https://github.com/Lsortudo/firebaseApp/blob/main/screenshots/Fragment%20pix%20filled.png" width="360" height="740" /> <br>
 
 
 ## Diagram about companies
